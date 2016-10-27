@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+<meta charset="UTF-8">
+<style>
+a.login {
+	font-size: 20px;
+	padding: 5px;
+	background-color: #1ab2ff;
+	test-color: #ffffff;
+	font-weight: bold;
+}
+
+div.find {
+	margin-top: 100px;
+	margin-button: 200px;
+	margin-right: 100px;
+	margin-left: 300px;
+}
+</style>
+<title>회원 찾기</title>
+</head>
+<body>
+<div class="w3-content find" style="max-width: 1500px">
+		<header class="w3-center w3-xlarge w3-padding-24">
+			<a href="main.jsp" class="w3-left w3-btn w3-Orange login" onclick=".style.display='block'">영화 공작소</a> 
+		</header><br>
+		<div class="w3-half w3-contaner w3-large w3-white"
+			style="height: 900px">
+			<form style="height: 500px;">
+				<fieldset style="height: 340px; border-color: #00cc00; width: 499px">
+					<legend>아이디와 비밀번호 찾기</legend>
+					<form> 
+					</form>
+					<form action="idfind.jsp" method="post">
+						< 아이디 찾기 ><br>
+						이름 : <input type="text" name="fmemberName" placeholder="이름을 적어주세요"><br>
+						 별명 : <input type="text" name="fnickname" placeholder="별명을 적어주세요"><br> 
+						<button type="submit">찾기</button>
+					 </form>
+					<br>
+					
+					<form action="pwfind.jsp" method="post"> 
+						< 비밀번호 찾기 ><br>
+					 	이름 : <input type="text" name="fmemberName" placeholder="이름을 적어주세요"><br>
+						아이디 : <input type="text" name="fmemberid" placeholder="아이디를 적어주세요"><br> 
+						<button type="submit">찾기</button>
+					 </form>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
