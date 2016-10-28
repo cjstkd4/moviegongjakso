@@ -3,7 +3,7 @@
 <%
 	String y = request.getParameter("year");
 	String m = request.getParameter("month");
-
+	// getParameterValues()는 name으로 묶인 것들을 모두 가져옴.
 	Calendar cal = Calendar.getInstance();
 	int year = cal.get(Calendar.YEAR);
 	int month = cal.get(Calendar.MONTH) + 1;

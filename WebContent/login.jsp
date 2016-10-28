@@ -3,7 +3,7 @@
 <%
    response.setContentType("text/html;charset=EUC-KR;");
    request.setCharacterEncoding("EUC-KR");     //charset, Encoding 설정
-     
+   
    String logid = request.getParameter("logid");
    String logpw = request.getParameter("logpw");
    
@@ -27,7 +27,6 @@
 </head>
 <body>
    <%
-      out.println(logid + "=== " + logpw + " /////" + dbid + " ===" + dbpw); 
       if(! logid.equals(dbid) || ! logpw.equals(dbpw)){
          out.println("<p align=\"center\">아이디나 비밀번호 중 일치하지 않습니다.</p>");
          out.println("<p align=\"center\"><a href=\"main.jsp\">다시 로그인하기</a></p>");

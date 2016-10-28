@@ -38,13 +38,13 @@ public class DB {
     void createMovieInfoTable() {
         String str = "create table MovieInfo(" +
                 "id number, " +
-                "name varchar(60), " +
-                "genre varchar(50)," +
-                "time varchar(7)," +
-                "open varchar(12)," +
-                "director varchar(40)," +
-                "actors varchar(200)," +
-                "thumbAddr varchar(200))";
+                "name varchar2(60), " +
+                "genre varchar2(50)," +
+                "time varchar2(7)," +
+                "open varchar2(12)," +
+                "director varchar2(40)," +
+                "actors varchar2(200)," +
+                "thumbAddr varchar2(200))";
         String str2 = "alter table MovieInfo "+
                 "add constraint mv_id_pk primary key(id)";
         String str3 = "create sequence insertMovie increment by 1 start with 10000";
@@ -57,10 +57,10 @@ public class DB {
     void createMemberInfoTable() {
         String str = "create table MemberInfo(" +
                 "membership number," +
-                "memberid varchar(20) unique," +
-                "memberpw varchar(20)," +
-                "memberName varchar(15)," +
-                "nickname varchar(15) unique)";
+                "memberid varchar2(20) unique," +
+                "memberpw varchar2(20)," +
+                "memberName varchar2(15)," +
+                "nickname varchar2(15) unique)";
         String str2 =  "alter table MemberInfo "+
                 "add constraint mb_membership_pk primary key(membership)";
         String str3 = "create sequence insertMember increment by 1 start with 10000";
@@ -72,7 +72,7 @@ public class DB {
 
     void createFavoriteInfoTable() {
         String str = "create table FavoriteInfo(" +
-                "Memberid varchar(20)," +
+                "Memberid varchar2(20)," +
                 "MovieID number)";
         String str2 = "alter table FavoriteInfo "+
                 "add CONSTRAINT fv_memberid_fk "+

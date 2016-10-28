@@ -1,19 +1,34 @@
 package jspdb;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
 
 public class parseMovieInfo {
     static DB db;
     static MovieInfo mi;
+    static Document doc;
 
     public static void main(String args[]) throws Exception {
-        Document doc = Jsoup.connect("http://movie.naver.com/movie/running/premovie.nhn").get();
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpGet httpGet = new HttpGet("http://movie.naver.com/movie/running/premovie.nhn");
+        httpClient.execute(httpGet, new BasicResponseHandler() {
+            @Override
+            public String handleResponse(HttpResponse response) throws IOException {
+                String res = new String(super.handleResponse(response));
+                doc = Jsoup.parse(res);
+                return res;
+            }
+        });
         Elements names = doc.select("dt.tit a");
         Elements times = doc.select("dl.info_txt1 dd");
         Elements thumbAddr = doc.select("ul.lst_detail_t1 img");
@@ -116,8 +131,8 @@ public class parseMovieInfo {
     }
 
     private static void parseDataToDB(DB db) {
-        for (int i = 0; i < mi.getMovieName().size(); i++) {
-            String name = mi.getMovieName().get(i);
+        for (int i = 0; i < mi.getMovieName().size()-1; i++) {
+            String name = mi.getMovieName().get(i+1);
             String genre = mi.getMovieGenre().get(i);
             String time = mi.getMovieTime().get(i);
             String open = mi.getMovieOpen().get(i);
