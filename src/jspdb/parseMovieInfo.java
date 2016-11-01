@@ -21,7 +21,6 @@ public class parseMovieInfo {
 	public static void main(String args[]) throws Exception {
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpGet httpGet = new HttpGet("http://movie.naver.com/movie/running/premovie.nhn");
-		
 		httpClient.execute(httpGet, new BasicResponseHandler() {
 			@Override
 			public String handleResponse(HttpResponse response) throws IOException {
