@@ -24,7 +24,7 @@ public class DB {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
         } catch (ClassNotFoundException e) {
-            System.out.println("Driver È£Ãâ ½ÇÆĞ.");
+            System.out.println("Driver í˜¸ì¶œ ì‹¤íŒ¨.");
         }
         try {
             c = DriverManager.getConnection(url, id, pw);
@@ -51,7 +51,7 @@ public class DB {
         excuteQ(str);
         excuteQ(str2);
         excuteQ(str3);
-        System.out.println("**MovieInfoÅ×ÀÌºíÀÌ »ı¼ºµÇ¾ú½À´Ï´Ù.**");
+        System.out.println("**MovieInfoí…Œì´ë¸”ì´ ìƒì„±ë˜ì—ˆìŠµë‹ˆë‹¤.**");
     }
 
     void createMemberInfoTable() {
@@ -67,7 +67,7 @@ public class DB {
         excuteQ(str);
         excuteQ(str2);
         excuteQ(str3);
-        System.out.println("**MemberInfoÅ×ÀÌºíÀÌ »ı¼ºµÇ¾ú½À´Ï´Ù.**");
+        System.out.println("**MemberInfoí…Œì´ë¸”ì´ ìƒì„±ë˜ì—ˆìŠµë‹ˆë‹¤.**");
     }
 
     void createFavoriteInfoTable() {
@@ -87,7 +87,7 @@ public class DB {
         excuteQ(str);
         excuteQ(str2);
         excuteQ(str3);
-        System.out.println("**FavoriteInfoÅ×ÀÌºíÀÌ »ı¼ºµÇ¾ú½À´Ï´Ù.**");
+        System.out.println("**FavoriteInfoí…Œì´ë¸”ì´ ìƒì„±ë˜ì—ˆìŠµë‹ˆë‹¤.**");
     }
 
     void deleteMovieInfoTable() {
@@ -95,7 +95,7 @@ public class DB {
         String str2 = "drop table movieinfo";
         excuteQ(str);
         excuteQ(str2);
-        System.out.println("**MovieInfoÅ×ÀÌºíÀÌ Á¦°ÅµÇ¾ú½À´Ï´Ù.**");
+        System.out.println("**MovieInfoí…Œì´ë¸”ì´ ì œê±°ë˜ì—ˆìŠµë‹ˆë‹¤.**");
     }
 
     void deleteMemberInfoTable() {
@@ -103,13 +103,13 @@ public class DB {
         String str2 = "drop table MemberInfo";
         excuteQ(str);
         excuteQ(str2);
-        System.out.println("**MemberInfoÅ×ÀÌºíÀÌ Á¦°ÅµÇ¾ú½À´Ï´Ù.**");
+        System.out.println("**MemberInfoí…Œì´ë¸”ì´ ì œê±°ë˜ì—ˆìŠµë‹ˆë‹¤.**");
     }
 
     void deleteFavoriteInfoTable() {
         String str = "drop table FavoriteInfo";
         excuteQ(str);
-        System.out.println("**FavoriteInfoÅ×ÀÌºíÀÌ Á¦°ÅµÇ¾ú½À´Ï´Ù.**");
+        System.out.println("**FavoriteInfoí…Œì´ë¸”ì´ ì œê±°ë˜ì—ˆìŠµë‹ˆë‹¤.**");
     }
 
     public void excuteQ(String str) {
@@ -188,6 +188,19 @@ public class DB {
             e.printStackTrace();
         }
         return info;
+    }
+    
+    public boolean dupCheck(String category, String dupStr) {
+    	boolean isDup = false;
+    	String str = " select * from MemberInfo where "+category+"='" + dupStr + "' ";
+    	try{
+    		rs = st.executeQuery(str);
+    		if(rs.next())
+    			isDup = true;
+    	} catch(SQLException e){
+    		e.printStackTrace();
+    	}
+    	return isDup;
     }
 
     public ArrayList getAllMovieByCondition(String t1) {
