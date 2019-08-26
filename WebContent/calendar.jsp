@@ -12,7 +12,7 @@
 
 	String y = request.getParameter("year");
 	String m = request.getParameter("month");
-	
+	String nn = request.getParameter("nn");
 	Calendar cal = Calendar.getInstance();
 	int year = cal.get(Calendar.YEAR);
 	int month = cal.get(Calendar.MONTH) + 1;
@@ -30,10 +30,10 @@
 	year = cal.get(Calendar.YEAR);
 	month = cal.get(Calendar.MONTH) + 1;
 
-	// 1ÀÏÀº ¹«½¼ ¿äÀÏ.
+	// 1ì¼ì€ ë¬´ìŠ¨ ìš”ì¼.
 	int w = cal.get(Calendar.DAY_OF_WEEK);
 
-	// ´ŞÀÇ ¸¶Áö¸· ³¯Â¥.
+	// ë‹¬ì˜ ë§ˆì§€ë§‰ ë‚ ì§œ.
 	int endDays = cal.getActualMaximum(Calendar.DATE);
 
 	DB db = new DB();
@@ -69,37 +69,37 @@
 <body>
 	<table width="600" cellpadding="0" cellspacing="1" bgcolor="#cccccc">
 		<caption style="height: 25px">
-			<a href="main.jsp?year=<%=year%>&month=<%=month-1%>" style="text-decoration:none"> ¢¸ </a>
-			<%=year %>³â <%=month %>¿ù
-			<a href="main.jsp?year=<%=year%>&month=<%=month+1%>" style="text-decoration:none"> ¢º </a>
+			<a href="main.jsp?year=<%=year%>&month=<%=month-1%>" style="text-decoration:none"> â—€ </a>
+			<%=year %>ë…„ <%=month %>ì›”
+			<a href="main.jsp?year=<%=year%>&month=<%=month+1%>" style="text-decoration:none"> â–¶ </a>
 			<a href="main.jsp"style="text-decoration:none"> Today </a>
 		</caption>
 		<tr height="40" bgcolor="#e4e4e4">
-			<td width="40" align="center">ÀÏ</td>
-			<td width="40" align="center">¿ù</td>
-			<td width="40" align="center">È­</td>
-			<td width="40" align="center">¼ö</td>
-			<td width="40" align="center">¸ñ</td>
-			<td width="40" align="center">±İ</td>
-			<td width="40" align="center">Åä</td>
+			<td width="40" align="center">ì¼</td>
+			<td width="40" align="center">ì›”</td>
+			<td width="40" align="center">í™”</td>
+			<td width="40" align="center">ìˆ˜</td>
+			<td width="40" align="center">ëª©</td>
+			<td width="40" align="center">ê¸ˆ</td>
+			<td width="40" align="center">í† </td>
 		</tr>
 		<%
 			int line = 0;
-			//¾ÕÀÇ °ø¹éÃ³¸®
+			//ì•ì˜ ê³µë°±ì²˜ë¦¬
 			out.print("<tr bgcolor='#ffffff' height='40'>");
 			for (int i = 1; i < w; i++) {
 				out.print("<td> </td>");
 				line += 1;
 			}
 	
-			//³¯Â¥Ãâ·Â
+			//ë‚ ì§œì¶œë ¥
 			String fc;					
 			for (int i = 1; i <= endDays; i++) {
 				fc = line == 0 ? "red" : (line == 6 ? "blue" : "black");
 				out.print("<td align='right' valign='top' style='color:" + fc + ";'>");
 				out.print(i + "<br>");
 				out.print("<br>");
-				out.print("<b style='color:black'>"+count[i]+"°³</b>");
+				out.print("<b style='color:black'>"+count[i]+"ê°œ</b>");
 				out.print("</td>");
 				line += 1;
 				if (line == 7 && i != endDays) {
@@ -108,7 +108,7 @@
 				}
 			}
 			
-			//µŞºÎºĞ °ø¹é Ã³¸®
+			//ë’·ë¶€ë¶„ ê³µë°± ì²˜ë¦¬
 			while (line > 0 && line < 7) {
 				out.print("<td> </td>");
 				line++;
