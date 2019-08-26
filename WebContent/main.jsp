@@ -4,6 +4,11 @@
 	String y = request.getParameter("year");
 	String m = request.getParameter("month");
 
+	String m = request.getParameter("month");
+	String m = request.getParameter("month");
+	String m = request.getParameter("month");
+	String m = request.getParameter("month");
+
 	Calendar cal = Calendar.getInstance();
 	int year = cal.get(Calendar.YEAR);
 	int month = cal.get(Calendar.MONTH) + 1;
